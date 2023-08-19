@@ -58,7 +58,7 @@ p {
     color: #828282;
 }
 
-#draganddrop {
+#dnd-area {
     background-color: #F6F8FB;
     width: 338px;
     height: 218.90283203125px;
@@ -74,7 +74,7 @@ p {
     align-items: center;
 } 
 
-#draganddrop p {
+#dnd-area p {
     font-family: 'Poppins', sans-serif;
     font-size: 12px;
     font-weight: 500;
@@ -107,6 +107,6 @@ button {
     cursor: pointer;
 }
 
-#draganddrop.active {
+#dnd-area.active {
     background-color: #2F80ED;
 }
