@@ -58,7 +58,7 @@ p {
     color: #828282;
 }
 
-#dnd-area {
+.dnd-area {
     background-color: #F6F8FB;
     width: 338px;
     height: 218.90283203125px;
@@ -74,12 +74,24 @@ p {
     align-items: center;
 } 
 
-#dnd-area p {
+.dnd-area p {
     font-family: 'Poppins', sans-serif;
     font-size: 12px;
     font-weight: 500;
     line-height: 18px;
     letter-spacing: -0.035em;
+    color: #BDBDBD;
+}
+
+.dnd-area.active {
+    background-color: #e0e7f0;
+    width: 341px;
+    height: 222px;
+    border: 2px dashed #97BEF4;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
     color: #BDBDBD;
 }
 
@@ -105,8 +117,4 @@ button {
     color: #FFFFFF;
     border-style: none;
     cursor: pointer;
-}
-
-#dnd-area.active {
-    background-color: #2F80ED;
 }
