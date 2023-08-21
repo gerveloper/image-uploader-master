@@ -31,13 +31,17 @@ dndArea.addEventListener("dragleave", (e) => {
 
 dndArea.addEventListener("drop", (e) => {
     e.preventDefault()
+    files = e.dataTransfer.files
+    showFiles(files)
     dndArea.classList.remove("active")
 })
+
+
 
 function showFiles(files) {
     if(files.length === undefined) {
         proccessFile(files)
-    }
+    } 
     else {
         for(const file of files) {
             proccessFile(file)
@@ -46,5 +50,18 @@ function showFiles(files) {
 }
 
 function proccessFile(file) {
+    const fileType = file.type
+    console.log(fileType)
+    const validExtensions = ["image/jpeg", "image/jpg", "image/gif", "image/jfif", "image/png", "image/svg+xml", "image/webp"]
 
+    if (validExtensions.includes(fileType)) {
+
+        
+
+
+    } 
+    else {
+
+        alert("The file doesn't have a valid extension")
+    }
 }
