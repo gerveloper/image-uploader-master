@@ -56,12 +56,37 @@ function proccessFile(file) {
 
     if (validExtensions.includes(fileType)) {
 
-        
+        const fileReader = new FileReader()
+        const id = `file-${Math.random().toString(32).substring(7)}`
 
+        fileReader.addEventListener('load', (e) => {
+            const fileUrl = fileReader.result
+            const image = `
+                    <div id="${id}" class="img-container">
+                        <div class="successful">
+                            <p>Uploaded Successfully!</p>
+                        </div>
+                        <img src="${fileUrl}" alt="${file.name} class="preview">
+                        <input type="submit">
+                        <button>Copy</button>
+                    </div>
+            `
+
+            const html = document.querySelector("#innerframe").innerHTML
+            document.querySelector("#innerframe").innerHTML = image + html
+        })
+
+        fileReader.readAsDataURL(file)
+        uploadFile(file, id)
 
     } 
     else {
 
         alert("The file doesn't have a valid extension")
     }
+}
+
+
+function uploadFile(file) {
+
 }
