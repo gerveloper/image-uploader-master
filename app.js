@@ -88,5 +88,10 @@ function proccessFile(file) {
 
 
 function uploadFile(file) {
+    const formData = new FormData()
+    formData.append("file", file)
 
+    try()
+
+    catch()
 }
