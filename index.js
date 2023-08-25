@@ -73,7 +73,8 @@ function proccessFile(file) {
             `
 
             const html = document.querySelector("#innerframe").innerHTML
-            document.querySelector("#innerframe").innerHTML = image + html
+            document.querySelector("#innerframe").innerHTML = image 
+            // + html
         })
 
         fileReader.readAsDataURL(file)
@@ -87,7 +88,7 @@ function proccessFile(file) {
 }
 
 
-async function uploadFile(file) {
+async function uploadFile(file, id) {
     const formData = new FormData()
     formData.append("file", file)
 
@@ -98,12 +99,17 @@ async function uploadFile(file) {
         })
 
         const responseText = await response.text()
+        console.log(responseText)
 
         document.querySelector(
             `#${id} .status-text`
-        )
+        ).innerHTML = `<span>Archivo subido correctamente</span>`
     }
     catch (err) {
+
+        document.querySelector(
+            `#${id} .status-text`
+        ).innerHTML = `<span>Error en la carga del archivo</span>`
         
     }
 }
