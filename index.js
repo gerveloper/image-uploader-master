@@ -13,7 +13,7 @@ button.addEventListener("click", (e) => {
 })
 
 input.addEventListener("change", (e) => {
-    files = this.files
+    files = e.target.files
     dndArea.classList.add("active")
     showFiles(files)
     dndArea.classList.remove("active")
@@ -61,20 +61,29 @@ function proccessFile(file) {
 
         fileReader.addEventListener('load', (e) => {
             const fileUrl = fileReader.result
+            
             const image = `
                     <div id="${id}" class="img-container">
                         <div class="successful">
                             <p>Uploaded Successfully!</p>
                         </div>
-                        <img src="${fileUrl}" alt="${file.name} class="preview">
-                        <input type="submit">
-                        <button>Copy</button>
+                        <img src="${fileUrl}" alt="${file.name}" class="preview">
+                        <div class="status">
+                            <span class="status-text">
+                                Loading...
+                            </span>
+                        </div>
+                        <div>
+                            <label>
+                            <input type="submit">
+                            <button>Copy</button>
+                        </div>
                     </div>
             `
 
             const html = document.querySelector("#innerframe").innerHTML
             document.querySelector("#innerframe").innerHTML = image 
-            // + html
+            //+ html
         })
 
         fileReader.readAsDataURL(file)
@@ -93,8 +102,8 @@ async function uploadFile(file, id) {
     formData.append("file", file)
 
     try{
-        const response = await fetch('http://localhost3000/upload', {
-            method : POST,
+        const response = await fetch('http://localhost:3000/upload', {
+            method : "POST",
             body : formData
         })
 
@@ -105,7 +114,7 @@ async function uploadFile(file, id) {
             `#${id} .status-text`
         ).innerHTML = `<span>Archivo subido correctamente</span>`
     }
-    catch (err) {
+    catch (error) {
 
         document.querySelector(
             `#${id} .status-text`
