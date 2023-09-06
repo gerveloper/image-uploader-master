@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
+const Image = require('./models/Image')
 const dotenv = require('dotenv')
 dotenv.config()
 const fileUpload = require('express-fileupload')
@@ -20,6 +21,22 @@ app.get('/', (req, res) => {
 
 app.post('/upload', (req, res) => {
     console.log(req.files.file)
+
+    let image = new Image({
+        url : 'testUrl'
+    })
+
+    image
+        .save()
+        .then(function (image) {
+            res.send({message : image.url})
+        })
+        .catch(function (err) {
+            console.log(err)
+            res.send({message : "error"})
+        })
+
+
     res.send(`Successfully uploaded file "${req.files.file.name}"`)
 })
 
